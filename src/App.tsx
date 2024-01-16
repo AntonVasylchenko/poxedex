@@ -1,7 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Wrapper } from "./styled";
+import { getItems } from "./Api/api";
+
 
 const App: React.FC = () => {
-  return <div>App</div>;
+  React.useEffect( () => {
+    getItems()
+  },[])
+  return (
+    <Wrapper>
+      app
+    </Wrapper>
+  );
 };
 
 export default App;
