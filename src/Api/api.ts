@@ -10,29 +10,21 @@ interface getData {
    results: resultItems[]
 }
 
-export const getDateFromApi = async (limit: number = 10): Promise<getData> => {
-  const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=0`
-  );
+export const getDateFromApi = async (limit: number = 1): Promise<getData> => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=0`);
   const data = await response.json();
   return data
 };
 
 
-export const getItems = async (): Promise<void> => {
+export const getItems = async (): Promise<any[]> => {
    const items = (await getDateFromApi()).results
-   console.log(items);
-
+   return await Promise.all(items.map( async item => await getSubDateFromApi(item.url)));
 }
 
-// const getPokemon = async (res) => {
-//    res.map(async el => {
-//        const result = await axios.get(el.url)
-//        setPokeData(state => {
 
-//            state = [...state, result.data];
-//            state.sort((a, b) => a.id - b.id)
-//            return state;
-//        })
-//    })
-// }
+export const getSubDateFromApi = async (url: string): Promise<any[]> => {
+   const subResponse = await fetch(url);
+   const subResult = await subResponse.json();
+   return subResult
+}
