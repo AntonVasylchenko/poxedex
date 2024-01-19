@@ -10,7 +10,7 @@ interface getData {
    results: resultItems[]
 }
 
-export const getDateFromApi = async (limit: number = 1): Promise<getData> => {
+export const getDateFromApi = async (limit: number = 3): Promise<getData> => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=0`);
   const data = await response.json();
   return data

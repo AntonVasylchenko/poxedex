@@ -1,17 +1,10 @@
 import React from "react";
-import { Wrapper, WrapperGrid } from "./styled";
+import { Wrapper } from "./styled";
 import { getItems } from "./Api/api";
-import { TinyCard } from "./components";
+import { PageWidth } from "./Ui";
+import { TinyCards,Header } from "./components";
+import { Item } from "./type/index"
 
-type Item = {
-  name: string;
-  id: number;
-  weight: number;
-  height: number;
-  sprites: {
-    front_default: string;
-  };
-};
 
 const App: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -29,24 +22,10 @@ const App: React.FC = () => {
 
   return (
     <Wrapper>
-      {loading ? (
-        <WrapperGrid>
-          {items.map((item) => {
-            return (
-              <TinyCard
-                key={item.id}
-                name={item.name}
-                id={item.id}
-                weight={item.weight}
-                height={item.height}
-                sprite={item.sprites.front_default}
-              />
-            );
-          })}
-        </WrapperGrid>
-      ) : (
-        <></>
-      )}
+      <Header title="Pokedex"/>
+      <PageWidth>
+        <TinyCards loading={loading} items={items}/>
+      </PageWidth>
     </Wrapper>
   );
 };
