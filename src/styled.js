@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
    :root {
       --color-mode: #fff;
-      --background-theme: #fff
+      --background-theme: #fff;
       --color-mode-logo: #000;
       --background-mode: #000;
    }
@@ -16,6 +16,11 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Roboto', sans-serif;
       font-weight: 400;
       font-size: 16px;
+   }
+
+   .disabled-scroll {
+      height: 100vh;
+      overflow: hidden;
    }
 
    

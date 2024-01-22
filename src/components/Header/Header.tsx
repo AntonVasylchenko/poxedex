@@ -3,6 +3,7 @@ import { HeaderWrapper, LogoElement, IconElement, Overlay } from "./styled";
 
 import IconFilter from "../../assets/icon-filter.svg";
 import IconMenu from "../../assets/icon-menu.svg";
+import IconBack from "../../assets/icon-back.svg";
 
 type headerProps = {
   title: string;
@@ -34,9 +35,14 @@ const Header: React.FC<headerProps> = ({ title = "Pokedex" }) => {
         />
       </IconElement>
 
-      <Overlay isOpen={open}>
+      <Overlay $open={open}>
         <div className="header-overlay__line"></div>
-        <div className="header-overlay__content"></div>
+        <div className="header-overlay__content">
+          <div className="header-overlay__header">
+            <img onClick={handlerOpen} src={IconBack} alt="Icon back" loading="lazy" />
+            <h2>{title}</h2>
+          </div>
+        </div>
       </Overlay>
     </HeaderWrapper>
   );

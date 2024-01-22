@@ -2,9 +2,8 @@ import React from "react";
 import { Wrapper } from "./styled";
 import { getItems } from "./Api/api";
 import { PageWidth } from "./Ui";
-import { TinyCards,Header } from "./components";
-import { Item } from "./type/index"
-
+import { TinyCards, Header, Search } from "./components";
+import { Item } from "./type/index";
 
 const App: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -22,9 +21,10 @@ const App: React.FC = () => {
 
   return (
     <Wrapper>
-      <Header title="Pokedex"/>
+      <Header title="Pokedex" />
+      <Search />
       <PageWidth>
-        <TinyCards loading={loading} items={items}/>
+        <TinyCards loading={loading} items={items} />
       </PageWidth>
     </Wrapper>
   );
