@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper } from "./styled";
-import { getItems } from "./Api/api";
-import { PageWidth } from "./Ui";
+import { getResponse } from "./Api/api";
+import { PageWidth,Pagination } from "./Ui";
 import { TinyCards, Header, Search } from "./components";
 import { Item } from "./type/index";
 
@@ -10,10 +10,29 @@ const App: React.FC = () => {
   const [items, setItems] = React.useState<Item[]>([]);
   const [search, setSearch] = React.useState<string>("");
 
+  const [pagination, setPagination] = React.useState<{
+    next: string | null;
+    prev: string | null;
+    currentPage: number;
+    maxPage: number;
+  }>({
+    next: "",
+    prev: "",
+    currentPage: 1,
+    maxPage: 0,
+  });
+
   const getData = async (): Promise<void> => {
+    const response = await getResponse(9);
     setLoading(false);
-    setItems([...(await getItems())]);
-    setLoading(true);
+    setItems([...response.items]);
+    setPagination((prev) => ({
+      ...prev,
+      next: response.nextPage,
+      prev: response.prevPage,
+      maxPage: response.pages,
+    }));
+    setLoading(true);    
   };
 
   React.useEffect(() => {
@@ -36,6 +55,7 @@ const App: React.FC = () => {
       <Search handlerChange={handlerChange} />
       <PageWidth>
         <TinyCards loading={loading} items={sortItems()} />
+        <Pagination {...pagination} />
       </PageWidth>
     </Wrapper>
   );
