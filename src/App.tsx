@@ -8,6 +8,7 @@ import { Item } from "./type/index";
 const App: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [items, setItems] = React.useState<Item[]>([]);
+  const [search, setSearch] = React.useState<string>("");
 
   const getData = async (): Promise<void> => {
     setLoading(false);
@@ -19,12 +20,22 @@ const App: React.FC = () => {
     getData();
   }, []);
 
+  const handlerChange = (query: string): void => {
+    setSearch(query);
+  };
+
+  const sortItems = (): Item[] => {
+    return items.filter((item) =>
+      item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    );
+  };
+
   return (
     <Wrapper>
       <Header title="Pokedex" />
-      <Search />
+      <Search handlerChange={handlerChange} />
       <PageWidth>
-        <TinyCards loading={loading} items={items} />
+        <TinyCards loading={loading} items={sortItems()} />
       </PageWidth>
     </Wrapper>
   );
