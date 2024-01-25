@@ -19,23 +19,21 @@ interface getData {
   results: resultItems[];
 }
 
-export const getDateFromApi = async (limit: number = 21): Promise<getData> => {
+export const getDateFromApi = async (offset:string = "0", limit: string = "9"): Promise<getData> => {
   const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=0`
+    `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
   );
   const data = await response.json();
   return data;
 };
 
-export const getResponse = async (
-  limit: number = 21
-): Promise<responseGetItems> => {
-  const { results, count, next, previous } = await getDateFromApi(limit);
+export const getResponse = async (offset:string = "0", limit: string = "9"): Promise<responseGetItems> => {
+  const { results, count, next, previous } = await getDateFromApi(offset,limit);
   
   const res = {
     nextPage: next,
     prevPage: previous,
-    pages: await getMaxRequest(count, limit),
+    pages: await getMaxRequest(count, Number(limit)),
     items: await Promise.all(
       results.map(async (result) => await getSubDateFromApi(result.url))
     ),
