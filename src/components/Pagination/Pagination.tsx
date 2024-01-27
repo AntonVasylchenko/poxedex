@@ -41,7 +41,7 @@ const Pagination: React.FC<propPagination> = ({
         name="next"
         data-url={next}
       >
-        Nexts
+        Next
       </button>
     </PaginationContainer>
   );

@@ -24,6 +24,7 @@ export const getDateFromApi = async (offset:string = "0", limit: string = "9"): 
     `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
   );
   const data = await response.json();
+  console.log(data);
   return data;
 };
 
