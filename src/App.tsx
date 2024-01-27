@@ -4,7 +4,7 @@ import { getResponse } from "./Api/api";
 import { PageWidth, Preloader } from "./Ui";
 import { TinyCards, Header, Search, Pagination } from "./components";
 import { Item } from "./type/index";
-import { setLocalStorage,getLocalStorage } from "./utils/utils";
+import { setLocalStorage, getLocalStorage } from "./utils/utils";
 
 const App: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -24,7 +24,7 @@ const App: React.FC = () => {
     currentPage: Number(getLocalStorage("currentPage", "1")) || 1,
     maxPage: 0,
     offset: getLocalStorage("offset", "0"),
-    limit:  getLocalStorage("limit", "33")
+    limit: getLocalStorage("limit", "33"),
   });
 
   const getData = async (offset: string, limit: string): Promise<void> => {
@@ -39,16 +39,16 @@ const App: React.FC = () => {
     }));
   };
 
-  React.useEffect( () => {
+  React.useEffect(() => {
     if (items.length !== 0) {
       setLoading(true);
     }
-  },[items])
+  }, [items]);
 
   React.useEffect(() => {
-    setLocalStorage("offset",pagination.offset)
-    setLocalStorage("limit",pagination.limit)
-    setLocalStorage("currentPage",pagination.currentPage)
+    setLocalStorage("offset", pagination.offset);
+    setLocalStorage("limit", pagination.limit);
+    setLocalStorage("currentPage", pagination.currentPage);
 
     getData(pagination.offset, pagination.limit);
   }, [pagination.offset, pagination.limit, pagination.currentPage]);
@@ -96,10 +96,16 @@ const App: React.FC = () => {
   return (
     <Wrapper>
       <Header title="Pokedex" />
-      <Search handlerChange={handlerChange} />
+      <Search handlerChange={handlerChange} search={search} />
       <PageWidth>
-        <TinyCards loading={loading} items={sortItems()} />
-        <Pagination {...pagination} handlerCurrentPage={handlerCurrentPage} />
+        {sortItems().length !== 0 ? (
+          <TinyCards loading={loading} items={sortItems()} />
+        ) : (
+          <h2 style={{textAlign: "center"}}>We haven't caught any Pokémon with this name yet</h2>
+        )}
+        {search.length === 0 && (
+          <Pagination {...pagination} handlerCurrentPage={handlerCurrentPage} />
+        )}
       </PageWidth>
     </Wrapper>
   );
