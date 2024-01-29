@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const PaginationContainer:any = styled.div`
+export const PaginationContainer = styled.div`
    margin-top: 20px;
+   margin-bottom: 20px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -14,3 +15,6 @@ export const PaginationContainer:any = styled.div`
 `;
 
 PaginationContainer.displayName = PaginationContainer;
+
+
+

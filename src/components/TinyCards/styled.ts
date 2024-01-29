@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { media } from '../../styled';
+
 
 export const WrapperGrid = styled.div`
    display: flex;
@@ -7,5 +9,10 @@ export const WrapperGrid = styled.div`
    flex-wrap: wrap;
    row-gap: 50px;
    column-gap: 32px;
+
+   ${media.desktop} {
+      row-gap: 20px;
+      column-gap: 20px;
+   }
 `;
 WrapperGrid.displayName = 'WrapperGrid'

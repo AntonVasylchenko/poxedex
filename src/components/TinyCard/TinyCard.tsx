@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './TinyCard.module.css'
+import { Card } from './styled';
 type TinyCardProp = {
    name: string;
    id: number;
@@ -11,30 +11,28 @@ type TinyCardProp = {
    }
 }
 
-
-
 const TinyCard: React.FC<TinyCardProp> = ({name,id,weight,height,sprite}) => {
   return (
-    <div className={style.tiny_card}>   
-      <span className={style.tiny_card__number}>#{id}</span>
-      <div className={style.tiny_card__container}>
-        <div className={style.tiny_card__info}>
-            <h2 className={style.tiny_card__title}>{name}</h2>
-            <ul className={style.tiny_card__list}>
-              <li className={style.tiny_card__item}>
-                <span className={style.tiny_card__item_name}>Weight: {weight}</span>
+    <Card>   
+      <span className="card__number">#{id}</span>
+      <div className="card__container">
+        <div className="card__info">
+            <h2 className="card__title">{name}</h2>
+            <ul className="card__list">
+              <li className="card__item">
+                <span className="card__item--name">Weight: {weight}</span>
               </li>
-              <li className={style.tiny_card__item}>
-                <span className={style.tiny_card__item_name}>Height: {height}</span>
+              <li className="card__item">
+                <span className="card__item--name">Height: {height}</span>
               </li>
             </ul>
         </div>
-        <div className={style.tiny_card__photo}>
-            <img className={style.tiny_card__photo_front} src={sprite.front} alt={name} loading='lazy' />
-            <img className={style.tiny_card__photo_back} src={sprite.back} alt={name} loading='lazy' />
+        <div className="card__photo">
+            <img className="card__photo--front" src={sprite.front} alt={name} loading='lazy' />
+            <img className="card__photo--back" src={sprite.back} alt={name} loading='lazy' />
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 

@@ -1,5 +1,4 @@
 import React from "react";
-import { Wrapper } from "./styled";
 import { getResponse } from "./Api/api";
 import { PageWidth, Preloader } from "./Ui";
 import { TinyCards, Header, Search, Pagination } from "./components";
@@ -94,9 +93,9 @@ const App: React.FC = () => {
   }
 
   return (
-    <Wrapper>
+    <>
       <Header title="Pokedex" />
-      <Search handlerChange={handlerChange} search={search} />
+      <Search handlerChange={handlerChange}/>
       <PageWidth>
         {sortItems().length !== 0 ? (
           <TinyCards loading={loading} items={sortItems()} />
@@ -107,7 +106,7 @@ const App: React.FC = () => {
           <Pagination {...pagination} handlerCurrentPage={handlerCurrentPage} />
         )}
       </PageWidth>
-    </Wrapper>
+    </>
   );
 };
 
