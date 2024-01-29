@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BallWrapper: any = styled.div`
+export const BallWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@ export const BallWrapper: any = styled.div`
   height: 100vh;
   overflow: hidden;
 `;
-export const Ball: any = styled.div`
+export const Ball = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 50%;

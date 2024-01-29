@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { GlobalStyle } from "./styled.js";
+import { GlobalStyle } from "./styled.ts";
 
 import "./assets/reset.css"
 

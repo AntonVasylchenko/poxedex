@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageWidthContainer } from './styled';
 
+
 type Props = {
   children?: React.ReactNode;
 };
