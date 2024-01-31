@@ -3,46 +3,35 @@ import { getResponse } from "./Api/api";
 import { PageWidth, Preloader } from "./Ui";
 import { TinyCards, Header, Search, Pagination } from "./components";
 import { Item } from "./type/index";
-import { setLocalStorage, getLocalStorage } from "./utils/utils";
+import { setLocalStorage, sortItems } from "./utils/utils";
+import { GlobalStyle } from "./styled";
+import { AppContext } from "./provides/contexts";
+import { useBoolen, usePagination } from "./hook";
 
 const App: React.FC = () => {
-  const [loading, setLoading] = React.useState<boolean>(false);
+  // Custom Hook
+  const { status, handlerStatus } = useBoolen(false);
+  const { pagination, handlerPagination } = usePagination();
+  // React Hook
   const [items, setItems] = React.useState<Item[]>([]);
   const [search, setSearch] = React.useState<string>("");
-
-  const [pagination, setPagination] = React.useState<{
-    next: string | null;
-    prev: string | null;
-    currentPage: number;
-    maxPage: number;
-    offset: string;
-    limit: string;
-  }>({
-    next: "",
-    prev: "",
-    currentPage: Number(getLocalStorage("currentPage", "1")) || 1,
-    maxPage: 0,
-    offset: getLocalStorage("offset", "0"),
-    limit: getLocalStorage("limit", "33"),
-  });
+  const { state } = React.useContext(AppContext);
 
   const getData = async (offset: string, limit: string): Promise<void> => {
     const response = await getResponse(offset, limit);
-    setLoading(false);
+
     setItems([...response.items]);
-    setPagination((prev) => ({
-      ...prev,
+
+    handlerPagination({
+      ...pagination,
       next: response.nextPage,
       prev: response.prevPage,
       maxPage: response.pages,
-    }));
-  };
-
-  React.useEffect(() => {
-    if (items.length !== 0) {
-      setLoading(true);
+    });
+    if (response.items.length !== 0) {
+      handlerStatus();
     }
-  }, [items]);
+  };
 
   React.useEffect(() => {
     setLocalStorage("offset", pagination.offset);
@@ -68,44 +57,48 @@ const App: React.FC = () => {
           const offset: string = searchParams.get("offset") || "0";
           const limit: string = searchParams.get("limit") || "9";
 
-          setPagination((prev) => ({
-            ...prev,
+          handlerPagination({
+            ...pagination,
             currentPage:
-              name === "next" ? prev.currentPage + 1 : prev.currentPage - 1,
+              name === "next"
+                ? pagination.currentPage + 1
+                : pagination.currentPage - 1,
             offset: offset,
             limit: limit,
-          }));
-          setLoading(false);
+          });
+          handlerStatus();
         }
       }
     },
-    [setPagination, setLoading]
+    [handlerPagination, handlerStatus]
   );
-
-  const sortItems = (): Item[] => {
-    return items.filter((item) =>
-      item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-    );
-  };
-
-  if (loading === false) {
-    return <Preloader />;
-  }
 
   return (
     <>
-      <Header title="Pokedex" />
-      <Search handlerChange={handlerChange}/>
-      <PageWidth>
-        {sortItems().length !== 0 ? (
-          <TinyCards loading={loading} items={sortItems()} />
-        ) : (
-          <h2 style={{textAlign: "center"}}>We haven't caught any Pokémon with this name yet</h2>
-        )}
-        {search.length === 0 && (
-          <Pagination {...pagination} handlerCurrentPage={handlerCurrentPage} />
-        )}
-      </PageWidth>
+      <GlobalStyle themeName={state.theme} />
+      {status === false ? (
+        <Preloader />
+      ) : (
+        <>
+          <Header title="Pokedex" />
+          <Search handlerChange={handlerChange} />
+          <PageWidth>
+            {sortItems(items, search).length !== 0 ? (
+              <TinyCards loading={status} items={sortItems(items, search)} />
+            ) : (
+              <h2 style={{ textAlign: "center" }}>
+                We haven't caught any Pokémon with this name yet
+              </h2>
+            )}
+            {search.length === 0 && (
+              <Pagination
+                {...pagination}
+                handlerCurrentPage={handlerCurrentPage}
+              />
+            )}
+          </PageWidth>
+        </>
+      )}
     </>
   );
 };

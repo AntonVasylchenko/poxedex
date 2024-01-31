@@ -25,4 +25,4 @@ export const SearchWrapper = styled.div`
   }
 `;
 
-SearchWrapper.displayName = SearchWrapper;
+SearchWrapper.displayName = "SearchWrapper";

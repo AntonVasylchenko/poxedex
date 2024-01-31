@@ -8,3 +8,12 @@ export type Item = {
      back_default: string;
    };
  };
+
+export type PaginationType = {
+  next: string | null;
+  prev: string | null;
+  currentPage: number;
+  maxPage: number;
+  offset: string;
+  limit: string;
+};

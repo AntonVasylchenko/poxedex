@@ -10,12 +10,12 @@ export const media = {
   mobile: customMediaQuery(768),
 };
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{themeName: string}>`
    :root {
-      --color-mode: #fff;
-      --background-theme: #fff;
-      --color-mode-logo: #000;
-      --background-mode: #000;
+      --color-mode: ${props => props.themeName === "light" ? "#fff" : "#000"};
+      --background-theme: ${props => props.themeName === "light" ? "#fff" : "#000"};
+      --color-mode-logo: ${props => props.themeName === "light" ? "#000" : "#fff"};
+      --background-mode: ${props => props.themeName === "light" ? "#000" : "#fff"};
       --side-space: 70px;
       ${media.desktop} {
          --side-space: 30px;

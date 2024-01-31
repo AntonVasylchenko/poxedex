@@ -3,6 +3,7 @@ import { HeaderWrapper, LogoElement, IconElement} from "./styled";
 
 import IconFilter from "../../assets/icon-filter.svg";
 import IconMenu from "../../assets/icon-menu.svg";
+import { Toggle } from "../../Ui";
 
 type headerProps = {
   title: string;
@@ -22,6 +23,8 @@ const Header: React.FC<headerProps> = ({ title = "Pokedex" }) => {
           loading="lazy"
         />
       </IconElement>
+      <Toggle/>
+
     </HeaderWrapper>
   );
 };
