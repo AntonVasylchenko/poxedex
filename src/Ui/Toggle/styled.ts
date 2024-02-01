@@ -2,26 +2,26 @@ import styled from "styled-components";
 
 export const ToggleSwitcher = styled.div`
   display: inline-block;
-  width: 72px; /* ширина */
-  height: 38px; /* высота */
-  border-radius: 19px; /* радиус скругления */
-  background: #bfbfbf; /* цвет фона */
+  width: 40px; 
+  height: 24px; 
+  border-radius: 19px;
+  background: #bfbfbf;
   z-index: 0;
   margin: 0;
   padding: 0;
   border: none;
   cursor: pointer;
   position: relative;
-  transition-duration: 300ms; /* анимация */
+  transition-duration: 300ms;
   &::after {
     content: "";
-    height: 32px; /* высота кнопки */
-    width: 32px; /* ширина кнопки */
+    height: 20px; 
+    width: 20px; 
     border-radius: 17px;
-    background: #fff; /* цвет кнопки */
-    top: 3px; /* положение кнопки по вертикали относительно основы */
-    left: 3px; /* положение кнопки по горизонтали относительно основы */
-    transition-duration: 300ms; /* анимация */
+    background: #fff; 
+    top: 1.5px; 
+    left: 3px;
+    transition-duration: 300ms;
     position: absolute;
     z-index: 1;
   }
@@ -29,7 +29,7 @@ export const ToggleSwitcher = styled.div`
     background: #118c4e;
   }
   &.switch-on::after {
-    left: 37px;
+    left: 18px;
   }
 `;
 ToggleSwitcher.displayName = "ToggleSwitcher";

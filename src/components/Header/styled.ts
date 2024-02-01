@@ -4,9 +4,10 @@ export const HeaderWrapper = styled.header`
   background-color: var(--background-theme);
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-column-gap: 15px;
+  grid-template-columns: auto 1fr 40px auto;
+  grid-column-gap: 5px;
   padding: 15px var(--side-space);
+  align-items: center;
 
   border-radius: 20px;
 
@@ -17,12 +18,14 @@ export const HeaderWrapper = styled.header`
 `;
 HeaderWrapper.displayName = "HeaderWrapper";
 
-export const LogoElement = styled.div`
+export const LogoElement = styled.h1`
   width: 100%;
   color: var(--color-mode-logo);
   font-size: 28px;
   font-weight: 700;
   text-align: center;
+  margin: 0;
+  padding-left: 50px;
 `;
 LogoElement.displayName = "LogoElement";
 

@@ -1,30 +1,40 @@
 import React from "react";
-import { HeaderWrapper, LogoElement, IconElement} from "./styled";
+import { HeaderWrapper, LogoElement, IconElement } from "./styled";
 
 import IconFilter from "../../assets/icon-filter.svg";
+import IconFilterDark from "../../assets/icon-filter-dark.svg";
 import IconMenu from "../../assets/icon-menu.svg";
-import { Toggle } from "../../Ui";
+import IconMenuDark from "../../assets/icon-menu-dark.svg";
+
+import { Toggle } from "../../ui";
+import { getLocalStorage } from "../../utils/utils";
 
 type headerProps = {
   title: string;
 };
 
 const Header: React.FC<headerProps> = ({ title = "Pokedex" }) => {
+  const isLightTheme =
+    getLocalStorage("theme", "dark") === "light" ? false : true;
+
   return (
     <HeaderWrapper>
       <IconElement>
-        <img src={IconFilter} alt="Icon filter" loading="lazy" />
+        <img
+          src={isLightTheme ? IconFilterDark : IconFilter}
+          alt="Icon filter"
+          loading="lazy"
+        />
       </IconElement>
       <LogoElement>{title}</LogoElement>
+      <Toggle />
       <IconElement>
         <img
-          src={IconMenu}
+          src={isLightTheme ? IconMenuDark : IconMenu}
           alt="Icon meny"
           loading="lazy"
         />
       </IconElement>
-      <Toggle/>
-
     </HeaderWrapper>
   );
 };

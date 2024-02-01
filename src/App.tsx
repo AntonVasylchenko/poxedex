@@ -1,6 +1,6 @@
 import React from "react";
 import { getResponse } from "./Api/api";
-import { PageWidth, Preloader } from "./Ui";
+import { PageWidth, Preloader } from "./ui";
 import { TinyCards, Header, Search, Pagination } from "./components";
 import { Item } from "./type/index";
 import { setLocalStorage, sortItems } from "./utils/utils";
