@@ -7,6 +7,7 @@ export const PaginationContainer = styled.div`
   justify-content: center;
   align-items: center;
   column-gap: 20px;
+  color: var(--color-mode-logo);
 
   .disabled-button {
     pointer-events: none;
