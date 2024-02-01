@@ -46,7 +46,7 @@ Error generating stack: `+o.message+`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: var(--background-theme);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -339,6 +339,7 @@ Error generating stack: `+o.message+`
   justify-content: center;
   align-items: center;
   column-gap: 20px;
+  color: var(--color-mode-logo);
 
   .disabled-button {
     pointer-events: none;
