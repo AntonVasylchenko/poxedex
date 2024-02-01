@@ -15,7 +15,7 @@ type headerProps = {
 
 const Header: React.FC<headerProps> = ({ title = "Pokedex" }) => {
   const isLightTheme =
-    getLocalStorage("theme", "dark") === "light" ? false : true;
+    getLocalStorage("theme", "light") === "light" ? false : true;
 
   return (
     <HeaderWrapper>

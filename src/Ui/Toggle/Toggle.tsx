@@ -5,7 +5,7 @@ import { ToggleSwitcher } from "./styled";
 import { setLocalStorage,getLocalStorage } from "../../utils/utils";
 
 const Toggle: React.FC = () => {
-  const isLightTheme = getLocalStorage("theme","dark") === "light" ? false : true;
+  const isLightTheme = getLocalStorage("theme","light") === "light" ? false : true;
   const { status, handlerStatus } = useBoolen(isLightTheme);
   const { dispatch } = React.useContext(AppContext);
 
