@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../styled";
+import { media } from "../Loyaut/styled";
 
 export const Card = styled.div`
   max-width: calc(100% / 3 - 32px * 2 / 3);

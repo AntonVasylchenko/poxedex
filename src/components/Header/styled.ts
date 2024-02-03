@@ -26,6 +26,11 @@ export const LogoElement = styled.h1`
   text-align: center;
   margin: 0;
   padding-left: 50px;
+  text-transform: uppercase;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 LogoElement.displayName = "LogoElement";
 

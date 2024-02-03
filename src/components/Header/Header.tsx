@@ -8,6 +8,7 @@ import IconMenuDark from "../../assets/icon-menu-dark.svg";
 
 import { Toggle } from "../../ui";
 import { getLocalStorage } from "../../utils/utils";
+import { Link } from "react-router-dom";
 
 type headerProps = {
   title: string;
@@ -26,7 +27,7 @@ const Header: React.FC<headerProps> = ({ title = "Pokedex" }) => {
           loading="lazy"
         />
       </IconElement>
-      <LogoElement>{title}</LogoElement>
+      <LogoElement><Link to="/PokemonTs">{title}</Link></LogoElement>
       <Toggle />
       <IconElement>
         <img
