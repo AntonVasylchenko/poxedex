@@ -1,12 +1,10 @@
 import React from "react";
-import { getResponse } from "./Api/api";
-import { PageWidth, Preloader } from "./Ui";
-import { TinyCards, Header, Search, Pagination } from "./components";
-import { Item } from "./type/index";
-import { setLocalStorage, sortItems } from "./utils/utils";
-import { GlobalStyle } from "./styled";
-import { AppContext } from "./provides/contexts";
-import { useBoolen, usePagination } from "./hook";
+import { getResponse } from "../../Api/api";
+import { PageWidth, Preloader } from "../../ui";
+import { TinyCards, Search, Pagination } from "..";
+import { Item } from "../../type/index";
+import { setLocalStorage, sortItems } from "../../utils/utils";
+import { useBoolen, usePagination } from "../../hook";
 
 const App: React.FC = () => {
   // Custom Hook
@@ -15,7 +13,6 @@ const App: React.FC = () => {
   // React Hook
   const [items, setItems] = React.useState<Item[]>([]);
   const [search, setSearch] = React.useState<string>("");
-  const { state } = React.useContext(AppContext);
 
   const getData = async (offset: string, limit: string): Promise<void> => {
     const response = await getResponse(offset, limit);
@@ -75,12 +72,11 @@ const App: React.FC = () => {
 
   return (
     <>
-      <GlobalStyle themeName={state.theme} />
       {status === false ? (
         <Preloader />
       ) : (
         <>
-          <Header title="Pokedex" />
+          
           <Search handlerChange={handlerChange} />
           <PageWidth>
             {sortItems(items, search).length !== 0 ? (

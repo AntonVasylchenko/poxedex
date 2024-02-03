@@ -1,11 +1,12 @@
 import React from "react";
-import { ToggleSwitcher } from "./styled";
 import { useBoolen } from "../../hook";
 import { AppContext } from "../../provides/contexts";
-AppContext;
+import { ToggleSwitcher } from "./styled";
+import { setLocalStorage,getLocalStorage } from "../../utils/utils";
 
 const Toggle: React.FC = () => {
-  const { status, handlerStatus } = useBoolen(false);
+  const isLightTheme = getLocalStorage("theme","light") === "light" ? false : true;
+  const { status, handlerStatus } = useBoolen(isLightTheme);
   const { dispatch } = React.useContext(AppContext);
 
   const handlerTheme = () => {
@@ -14,6 +15,7 @@ const Toggle: React.FC = () => {
       type: "setTheme",
       payload: status ? "light" : "dark",
     });
+    setLocalStorage("theme", status ? "light" : "dark")
   };
 
   return (

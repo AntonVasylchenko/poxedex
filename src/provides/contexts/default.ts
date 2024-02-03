@@ -1,7 +1,11 @@
+import { getLocalStorage } from "../../utils/utils"
+
+
+
 export type defaultValueType = {
-   theme: "dark" | "light"
+   theme: string
 }
 
 export const defaultValue:defaultValueType = {
-   theme: "light"
+   theme: getLocalStorage("theme","light")
 }

@@ -4,7 +4,7 @@ export const BallWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: var(--background-theme);
   padding: 0;
   margin: 0;
   box-sizing: border-box;

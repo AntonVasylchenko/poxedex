@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { media } from '../../styled';
-
+import { media } from '../Loyaut/styled';
 
 export const WrapperGrid = styled.div`
    display: flex;
