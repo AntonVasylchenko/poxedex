@@ -6,15 +6,15 @@ import { Loyaut, MainCard, App } from "./components/index";
 
 const router = createBrowserRouter([
   {
-    path: "/PokemonTs/",
+    path: "/poxedex/",
     element:  <Loyaut/>,
     children: [
       {
-        path: "/PokemonTs/",
+        path: "/poxedex/",
         element: <App />,
       },
       {
-        path: "/PokemonTs/:name",
+        path: "/poxedex/:name",
         element: <MainCard />,
         loader: async ({ params }) => {
           return fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
