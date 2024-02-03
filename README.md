@@ -10,7 +10,7 @@ This project is my pet project and utilizes the Pokemon API to create a Pokedex 
 - Utilizing Styled Components for component styling.
 
 ## Running the Project
-1) git clone https://github.com/AntonVasylchenko/PokemonTs.git
-2) cd PokemonTs
+1) git clone https://github.com/AntonVasylchenko/poxedex.git
+2) cd poxedex
 3) npm install
 4) npm run dev
