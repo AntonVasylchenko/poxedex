@@ -10,12 +10,16 @@ export const media = {
   mobile: customMediaQuery(768),
 };
 
-export const GlobalStyle = createGlobalStyle<{themeName: string}>`
+export const GlobalStyle = createGlobalStyle<{ themeName: string }>`
    :root {
-      --color-mode: ${props => props.themeName === "light" ? "#fff" : "#000"};
-      --background-theme: ${props => props.themeName === "light" ? "#fff" : "#000"};
-      --color-mode-logo: ${props => props.themeName === "light" ? "#000" : "#fff"};
-      --background-mode: ${props => props.themeName === "light" ? "#000" : "#fff"};
+      --color-mode: ${(props) =>
+        props.themeName === "light" ? "#fff" : "#000"};
+      --background-theme: ${(props) =>
+        props.themeName === "light" ? "#fff" : "#000"};
+      --color-mode-logo: ${(props) =>
+        props.themeName === "light" ? "#000" : "#fff"};
+      --background-mode: ${(props) =>
+        props.themeName === "light" ? "#000" : "#fff"};
       --side-space: 70px;
       ${media.desktop} {
          --side-space: 30px;
@@ -34,6 +38,13 @@ export const GlobalStyle = createGlobalStyle<{themeName: string}>`
       font-family: 'Roboto', sans-serif;
       font-weight: 400;
       font-size: 16px;
+      width: 100vw;
+      min-height: 100vh;
+   }
+   #root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
    }
 
    .disabled-scroll {

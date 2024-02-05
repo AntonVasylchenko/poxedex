@@ -6,3 +6,4 @@ export { default as Pagination } from "./Pagination/Pagination.tsx";
 export { default as MainCard } from "./MainCard/MainCard.tsx";
 export { default as Loyaut } from "./Loyaut/Loyaut.tsx";
 export { default as App } from "./App/App.tsx";
+export { default as Navigation } from "./Navigation/Navigation.tsx";
