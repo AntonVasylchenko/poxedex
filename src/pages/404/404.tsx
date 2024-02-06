@@ -10,7 +10,7 @@ const Page404: React.FC = () => {
       <Page404Image>
         <img src={image404} alt="404" loading="lazy" />
       </Page404Image>
-      <Link to="/poxedex">Go home</Link>
+      <Link to="/poxedex">Go home </Link>
     </Page404Wrapper>
   );
 };
