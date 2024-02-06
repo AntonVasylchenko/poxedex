@@ -22,6 +22,7 @@ const Search: React.FC<searchProps> = ({ handlerChange }) => {
   return (
     <SearchWrapper>
       <div>
+        222
         <img src={iconSearch} alt="icon searh" loading="lazy" />
         <input
           onChange={changeSearchValue}
