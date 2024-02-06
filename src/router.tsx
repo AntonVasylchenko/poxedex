@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, MyTeam, Pokemon, Items} from "./pages";
+import { Home, MyTeam, Pokemon, Items,Page404} from "./pages";
 import { MainCard,Navigation } from "./components";
 export const router = createBrowserRouter([
   {
@@ -56,6 +56,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Home />,
+    element: <Page404 />,
   }
 ]);
