@@ -5,6 +5,7 @@ export const router = createBrowserRouter([
   {
     path: "/poxedex/",
     element: <Home />,
+    errorElement:<Page404/>,
     children: [
       {
         path: "/poxedex/",
