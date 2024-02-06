@@ -21,7 +21,7 @@ const TinyCard: React.FC<TinyCardProp> = ({
 }) => {
   return (
     <Card>
-      <Link to={`${name}`}>
+      <Link to={`/poxedex/pokemon/${name}`}>
         <span className="card__number">#{id}</span>
         <div className="card__container">
           <div className="card__info">

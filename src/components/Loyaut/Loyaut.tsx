@@ -7,7 +7,7 @@ import { AppContext } from "../../provides/contexts";
 
 const Loyaut: React.FC = () => {
   const { state } = React.useContext(AppContext);
-  const {name} = useParams();  
+  const { name } = useParams();
 
   return (
     <>

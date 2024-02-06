@@ -25,11 +25,6 @@ const MainCard: React.FC = () => {
   if (!information) return <></>;
   return (
     <div>
-      {information.stats.map((stat, index) => (
-        <p key={index}>{stat.base_stat}</p>
-      ))}
-
-      <img src={information.sprites.other.dream_world.front_default} alt="" />
     </div>
   );
 };

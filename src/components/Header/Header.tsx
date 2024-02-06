@@ -1,41 +1,41 @@
 import React from "react";
-import { HeaderWrapper, LogoElement, IconElement } from "./styled";
-
-import IconFilter from "../../assets/icon-filter.svg";
-import IconFilterDark from "../../assets/icon-filter-dark.svg";
-import IconMenu from "../../assets/icon-menu.svg";
-import IconMenuDark from "../../assets/icon-menu-dark.svg";
+import IconBack from "../../assets/icon-back.svg";
+import IconBackDark from "../../assets/icon-back-dark.svg";
 
 import { Toggle } from "../../ui";
 import { getLocalStorage } from "../../utils/utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { HeaderWrapper, LogoElement, IconElement } from "./styled";
 
 type headerProps = {
   title: string;
 };
 
 const Header: React.FC<headerProps> = ({ title = "Pokedex" }) => {
+  let { pathname } = useLocation();
+  const navigate = useNavigate();
   const isLightTheme =
     getLocalStorage("theme", "light") === "light" ? false : true;
 
   return (
     <HeaderWrapper>
       <IconElement>
-        <img
-          src={isLightTheme ? IconFilterDark : IconFilter}
-          alt="Icon filter"
-          loading="lazy"
-        />
+        {pathname === "/poxedex" || (
+          <img
+            onClick={() => navigate(-1)}
+            src={isLightTheme ? IconBackDark : IconBack}
+            alt="Icon filter"
+            loading="lazy"
+          />
+        )}
       </IconElement>
-      <LogoElement><Link to="/PokemonTs">{title}</Link></LogoElement>
+      <LogoElement>
+        {pathname === "/poxedex" ? 
+        title : (
+          <Link to="/poxedex">{title}</Link>
+        )}
+      </LogoElement>
       <Toggle />
-      <IconElement>
-        <img
-          src={isLightTheme ? IconMenuDark : IconMenu}
-          alt="Icon meny"
-          loading="lazy"
-        />
-      </IconElement>
     </HeaderWrapper>
   );
 };
