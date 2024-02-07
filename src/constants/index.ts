@@ -25,3 +25,12 @@ export const navPaths = () => {
     },
   ];
 };
+
+export const colors = [
+  "#14CC60",
+  "#E4C811",
+  "#EF3E33",
+  "#004E98",
+  "#C589E8",
+  "#2589BD",
+];
