@@ -10,13 +10,6 @@ export const Card = styled.div`
   padding: 20px;
   cursor: pointer;
 
-  &:hover .card__photo--back {
-    opacity: 1;
-  }
-  &:hover .card__photo--front {
-    opacity: 0;
-  }
-
   .card__number {
     color: var(--color-mode);
     font-size: 14px;
@@ -67,10 +60,6 @@ export const Card = styled.div`
     opacity: 1;
   }
 
-  .card__photo--back {
-    opacity: 0;
-  }
-
   ${media.desktop} {
     max-width: calc(100% / 2 - 20px * 1 / 2);
   }
@@ -90,5 +79,4 @@ export const Card = styled.div`
   }
 `;
 
-
-Card.displayName = "Card"
+Card.displayName = "Card";

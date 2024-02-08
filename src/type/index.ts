@@ -1,13 +1,16 @@
 export type Item = {
-   name: string;
-   id: number;
-   weight: number;
-   height: number;
-   sprites: {
-     front_default: string;
-     back_default: string;
-   };
- };
+  name: string;
+  id: number;
+  weight: number;
+  height: number;
+  sprites: {
+    front_default: string;
+    back_default: string;
+    other: {
+      dream_world: { front_default: string };
+    };
+  };
+};
 
 export type PaginationType = {
   next: string | null;

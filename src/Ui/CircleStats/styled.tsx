@@ -34,6 +34,7 @@ export const CirleBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
   p {
    font-size: 18px ;
    line-height: 40px;

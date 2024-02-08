@@ -8,7 +8,7 @@ type TinyCardsProps = {
   items: Item[];
 };
 
-const TinyCards: React.FC<TinyCardsProps> = ({ loading, items }) => {
+const TinyCards: React.FC<TinyCardsProps> = ({ loading, items }) => {  
   return (
     <WrapperGrid>
       {loading ? (
@@ -18,12 +18,7 @@ const TinyCards: React.FC<TinyCardsProps> = ({ loading, items }) => {
               key={item.id}
               name={item.name}
               id={item.id}
-              weight={item.weight}
-              height={item.height}
-              sprite={{
-                front: item.sprites.front_default,
-                back: item.sprites.back_default,
-              }}
+              sprite={item.sprites.other.dream_world.front_default}
             />
           );
         })
