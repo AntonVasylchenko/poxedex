@@ -1,6 +1,5 @@
 import { useId } from "react";
 import iconPokemons from "../assets/pokemons.png";
-import iconItems from "../assets/items.png";
 import iconTeam from "../assets/team.png";
 
 export const navPaths = () => {
