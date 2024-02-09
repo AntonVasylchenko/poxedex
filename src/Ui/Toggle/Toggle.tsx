@@ -4,6 +4,7 @@ import { AppContext } from "../../provides/contexts";
 import { ToggleSwitcher } from "./styled";
 import { setLocalStorage,getLocalStorage } from "../../utils/utils";
 
+import icon from "../../assets/icon-pokeboll.svg"
 const Toggle: React.FC = () => {
   const isLightTheme = getLocalStorage("theme","light") === "light" ? false : true;
   const { status, handlerStatus } = useBoolen(isLightTheme);
@@ -23,7 +24,9 @@ const Toggle: React.FC = () => {
       <ToggleSwitcher
         onClick={handlerTheme}
         className={`${status ? "switch-on" : ""}`}
-      ></ToggleSwitcher>
+      >
+        <img src={icon} alt="Pokeboll" />
+      </ToggleSwitcher>
     </>
   );
 };

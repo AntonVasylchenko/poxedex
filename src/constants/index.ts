@@ -12,12 +12,6 @@ export const navPaths = () => {
       id: useId(),
     },
     {
-      name: "Items",
-      path: "items/",
-      image: iconItems,
-      id: useId(),
-    },
-    {
       name: "My Team",
       path: "team/",
       image: iconTeam,

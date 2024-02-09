@@ -62,6 +62,9 @@ export const Card = styled.div`
 
   ${media.desktop} {
     max-width: calc(100% / 2 - 20px * 1 / 2);
+    min-width: calc(100% / 2 - 20px * 1 / 2);
+    width: calc(100% / 2 - 20px * 1 / 2);
+
   }
   ${media.mobile} {
     max-width: 100%;

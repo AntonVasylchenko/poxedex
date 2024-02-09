@@ -52,4 +52,12 @@ export const GlobalStyle = createGlobalStyle<{ themeName: string }>`
       overflow: hidden;
    }
 
+   h1,h2,h3,h4,h5,h6 {
+      width: 100%;
+      margin: 20px auto;
+      text-align: center;
+      color: var(--color-mode-logo);
+      font-size: 18px;
+   } 
+
 `;

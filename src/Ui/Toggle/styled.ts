@@ -2,34 +2,34 @@ import styled from "styled-components";
 
 export const ToggleSwitcher = styled.div`
   display: inline-block;
-  width: 40px; 
-  height: 24px; 
+  max-width: 48px;
+  width: 100%;
+  height: 24px;
   border-radius: 19px;
-  background: #bfbfbf;
+  background: var(--background-mode);
   z-index: 0;
   margin: 0;
   padding: 0;
   border: none;
   cursor: pointer;
   position: relative;
-  transition-duration: 300ms;
-  &::after {
-    content: "";
-    height: 20px; 
-    width: 20px; 
-    border-radius: 17px;
-    background: #fff; 
-    top: 1.5px; 
-    left: 3px;
-    transition-duration: 300ms;
-    position: absolute;
-    z-index: 1;
-  }
+  transition: all 0.3s;
   &.switch-on {
-    background: #118c4e;
+    background: var(--background-mode);
+    img {
+      right: 0;
+      left: unset;
+    }
   }
-  &.switch-on::after {
-    left: 18px;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: all 0.3s;
   }
 `;
 ToggleSwitcher.displayName = "ToggleSwitcher";

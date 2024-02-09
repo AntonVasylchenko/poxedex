@@ -4,6 +4,7 @@ import { CircleStats, PageWidth } from "../../ui";
 import { colors } from "../../constants";
 import { StatsWrapper, RateWrapper, InfoWrapper, InfoImage,AddTeam } from "./styled";
 import { Item } from "../../type/index";
+import { useBoolen } from "../../hook";
 
 type InformationType = {
   abilities: { ability: { name: string } }[];
@@ -28,45 +29,54 @@ type InformationType = {
 
 const MainCard: React.FC = () => {
   const information = useLoaderData() as InformationType;
+  const localTeam = localStorage.getItem("team");
+  const { status, handlerStatus } = useBoolen(localTeam ? [...JSON.parse(localTeam)].some( el => +el.id === +information.id) : false);
   const generalState = [...information.stats].reduce(
     (accum, elem) => accum + +elem.base_stat,
     0
   );
 
   const handlerAddToTeam = () => {
-    const localTeam = localStorage.getItem("team");
-    if (!localTeam) {
-      const team: Item[] = [];
-      const teamItem = {
-        name: information.name,
-        id: information.id,
-        weight: information.weight,
-        height: information.height,
-        sprites: {
-          front_default: information.sprites.front_default,
-          back_default: information.sprites.back_default,
-          other: {
-            dream_world: {
-              front_default: information.sprites.other.dream_world.front_default
-            }
+    const teamItem = {
+      name: information.name,
+      id: information.id,
+      weight: information.weight,
+      height: information.height,
+      sprites: {
+        front_default: information.sprites.front_default,
+        back_default: information.sprites.back_default,
+        other: {
+          dream_world: {
+            front_default: information.sprites.other.dream_world.front_default
           }
         }
       }
+    }
 
-      console.log(teamItem);
-      
+    const isLocalStore = localTeam ? [...JSON.parse(localTeam)].some( el => +el.id === +information.id) : null;
+  
+    if (!localTeam) {
+      const team: Item[] = [];
       team.push(teamItem)
       localStorage.setItem("team",JSON.stringify(team));
-    }
-    
-    
+    } else if (!isLocalStore && localTeam) {
+      const parsedLocalTeam:Item[] = JSON.parse(localTeam);
+      parsedLocalTeam.push(teamItem)
+      localStorage.setItem("team",JSON.stringify(parsedLocalTeam));
+    } else if (isLocalStore && localTeam) {
+      const parsedLocalTeam:Item[] = JSON.parse(localTeam);
+      const filterLocalTeam = [...parsedLocalTeam].filter( elem => +elem.id !== +information.id);
+      localStorage.setItem("team",JSON.stringify(filterLocalTeam));
+    }   
+
+    handlerStatus()
   }
 
   if (!information) return <></>;
   return (
     <PageWidth>
       <InfoWrapper>
-        <AddTeam onClick={handlerAddToTeam}>Add to Team</AddTeam>
+        <AddTeam onClick={handlerAddToTeam}>{!status ? "Add to Team" : "Delete from Team"} </AddTeam>
 
         <InfoImage>
           <img

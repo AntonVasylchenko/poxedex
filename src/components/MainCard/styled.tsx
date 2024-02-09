@@ -84,5 +84,10 @@ export const AddTeam = styled.button`
   position: absolute;
   right: 20px;
   top: 20px;
+  border: 1px solid var(--background-mode);
+  background-color: var(--background-mode);
+  color: var(--color-mode);
+  padding: 10px;
+  border-radius: 20px;
 `;
 AddTeam.displayName = "AddTeam";

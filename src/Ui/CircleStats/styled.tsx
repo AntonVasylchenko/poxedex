@@ -42,6 +42,7 @@ export const CirleBarWrapper = styled.div`
    text-transform: capitalize;
    line-height: 18px;
    text-align: center;
+   color: var(--color-mode-logo);
   }
 
 `;
